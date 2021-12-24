@@ -1,0 +1,1 @@
+# module federation examples base on Vue2/Vue3
