@@ -1,0 +1,13 @@
+{
+  "name": "root",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  },
+  "scripts": {
+    "start": "lerna run --scope @applications/* --parallel start",
+    "build": "lerna run --scope @applications/* build",
+    "serve": "lerna run --scope @applications/* --parallel serve",
+    "clean": "lerna run --scope @applications/* --parallel clean"
+  }
+}
