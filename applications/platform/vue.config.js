@@ -25,5 +25,15 @@ module.exports = defineConfig({
   },
   devServer: {
     port: 8080,
+    proxy: {
+      "/flight": {
+        target: "http://test.tripm.51ykb.com",
+        changeOrigin: true,
+      },
+      '/Hotel/Hotels': {
+        target: 'http://test.tripm.51ykb.com',
+        changeOrigin: true
+      }
+    },
   },
 });

@@ -1,7 +1,13 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 // import { defineAsyncComponent } from "vue";
 import HomeView from "../views/HomeView.vue";
-// const flightList = defineAsyncComponent(() => import("flight/flightList"));
+// const staticFlightList = defineAsyncComponent(
+//   () => import("flight/staticFlightList")
+// );
+import { vue2ToVue32 } from "@/utils";
+// const staticFlightList = () => import("flight/staticFlightList");
+import staticFlightList from "flight/staticFlightList";
+console.log(vue2ToVue32(staticFlightList), HomeView);
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -23,6 +29,24 @@ const routes: Array<RouteRecordRaw> = [
     name: "vue2InVue3",
     component: () =>
       import(/* webpackChunkName: "vue2-in-vue3" */ "../views/Vue2InVue3.vue"),
+  },
+  {
+    path: "/flight-list",
+    name: "flightList",
+    component: vue2ToVue32(staticFlightList),
+  },
+  {
+    path: "/flight-list-inner",
+    name: "flightListInner",
+    component: () =>
+      import(
+        /* webpackChunkName: "flight-list-inner" */ "../views/FlightList.vue"
+      ),
+  },
+  {
+    path: "/hotel-list",
+    name: "hotelList",
+    component: () => import("hotel/hotelList2"),
   },
 ];
 

@@ -6,7 +6,7 @@ module.exports = defineConfig({
   publicPath: "http://localhost:8083/",
   configureWebpack: {
     optimization: {
-      splitChunks: false
+      splitChunks: false,
     },
     plugins: [
       new ModuleFederationPlugin({
@@ -16,6 +16,7 @@ module.exports = defineConfig({
         filename: "remoteEntry.js",
         exposes: {
           "./trainList": "./src/components/trainList",
+          "./trainListLayout": "./src/views/trainList"
         },
         // remotes: {
         //   flight: "flight@http://localhost:8081/remoteEntry.js",
@@ -28,5 +29,11 @@ module.exports = defineConfig({
   },
   devServer: {
     port: 8083,
+    proxy: {
+      "/ykb_train/train_query": {
+        target: "http://test.tripm.51ykb.com",
+        changeOrigin: true,
+      },
+    },
   },
 });

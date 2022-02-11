@@ -2,7 +2,10 @@
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>|
-    <router-link to="/vue2-in-vue3">vue2-in-vue3</router-link>
+    <router-link to="/vue2-in-vue3">vue2-in-vue3</router-link>|
+    <router-link to="/flight-list">flight-list-vue-router</router-link>|
+    <router-link to="/flight-list-inner">flight-list-inner</router-link>|
+    <router-link to="/hotel-list">hotel-list-vue-router</router-link>
   </nav>
   <router-view />
 </template>

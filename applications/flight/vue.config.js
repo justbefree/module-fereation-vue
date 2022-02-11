@@ -17,6 +17,7 @@ module.exports = defineConfig({
         exposes: {
           "./vue2": "./node_modules/vue/dist/vue",
           "./flightList": "./src/components/flightList",
+          "./staticFlightList": "./src/components/staticFlightList",
           "./vue2Button": "./src/components/vue2Button",
           "./vue2Count": "./src/components/vue2Count"
         },
@@ -29,6 +30,16 @@ module.exports = defineConfig({
     ],
   },
   devServer: {
-    port: 8081
+    port: 8081,
+    proxy: {
+      '/flight': {
+        target: 'http://test.tripm.51ykb.com',
+        changeOrigin: true
+      },
+      "/ykb_train/train_query": {
+        target: "http://test.tripm.51ykb.com",
+        changeOrigin: true,
+      }
+    }
   }
 });

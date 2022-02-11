@@ -15,7 +15,8 @@ module.exports = defineConfig({
         // library: { type: "umd" },
         filename: "remoteEntry.js",
         exposes: {
-          "./hotelList": "./src/components/hotelList"
+          "./hotelList": "./src/components/hotelList",
+          "./hotelList2": "./src/views/hotelList"
         },
         // remotes: {
         //   flight: "flight@http://localhost:8081/remoteEntry.js",
@@ -27,6 +28,12 @@ module.exports = defineConfig({
     ],
   },
   devServer: {
-    port: 8082
+    port: 8082,
+    proxy: {
+      '/Hotel/Hotels': {
+        target: 'http://test.tripm.51ykb.com',
+        changeOrigin: true
+      }
+    }
   }
 });
